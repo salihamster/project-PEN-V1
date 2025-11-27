@@ -84,7 +84,7 @@ This is required to automatically download your WhatsApp chat exports from a ded
     -   Save this file in the project root. rename it: "service_account.json".
 4.  **Share Your Drive Folder**:
     -   Open the downloaded JSON file and copy the `client_email` address (e.g., `pen-drive-sync@your-project-id.iam.gserviceaccount.com`).
-    -   In Google Drive, create a folder (e.g., `WhatsAppExports`) and upload your WhatsApp `.txt` chat export files into it.
+    -   In Google Drive, create a folder (Wpmesages - recomendet) and upload your WhatsApp `.txt` chat export files into it.
     -   Share this folder with the `client_email` address you copied, granting it **Viewer** access.
 
 ### 3. Configure Your Environment (`.env`)
