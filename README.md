@@ -81,10 +81,10 @@ This is required to automatically download your WhatsApp chat exports from a ded
 3.  **Generate a JSON Key**:
     -   Find your newly created service account in the list, click the three-dot menu under **Actions**, and select **Manage keys**.
     -   Click **ADD KEY > Create new key** and select **JSON** as the key type. A JSON file will be downloaded automatically.
-    -   Save this file in the project root (e.g., `C:/Users/Administrator/Desktop/project PEN/V1/project-pen-478215-956ca5da00a0.json`).
+    -   Save this file in the project root (as, `service_account.json`).
 4.  **Share Your Drive Folder**:
     -   Open the downloaded JSON file and copy the `client_email` address (e.g., `pen-drive-sync@your-project-id.iam.gserviceaccount.com`).
-    -   In Google Drive, create a folder (e.g., `WhatsAppExports`) and upload your WhatsApp `.txt` chat export files into it.
+    -   In Google Drive, create a folder (as, `Wpmesages`) and upload your WhatsApp `.txt` chat export files into it.
     -   Share this folder with the `client_email` address you copied, granting it **Viewer** access.
 
 ### 3. Configure Your Environment (`.env`)
@@ -170,4 +170,4 @@ For detailed error information, set `DEBUG=true` in your `.env` file and check t
 
 ---
 
-**Built with ❤️ and Google Gemini 2.5 Flash**
+**This readme Built with ❤️ and Google Gemini 2.5 Flash**
