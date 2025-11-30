@@ -98,7 +98,7 @@ Create a folder named **Wpmesages** (must be written exactly like this).
 - **Without Media**
 - Send to Google Drive → Upload to **Wpmesages** folder
 
-### Step 3 --- Run PEN
+### Step 3 --- Run main.py
 
 ```bash
 python main.py
@@ -138,13 +138,16 @@ EMAIL_PASSWORD=
 python main.py
 ```
 
-### Interactive agent:
-
+### Start PENNY
+(as CLI)
 ```bash
-python -m pen_agent
+python pen_agent.py
 ```
 
----
+(as localhost = http://localhost:8000/)
+```bash
+python web_server.py
+```
 
 ## 📈 Performance
 
