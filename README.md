@@ -92,29 +92,6 @@ pip install -r requirements.txt
 
 ---
 
-## 📱 WhatsApp Integration (Semi-Manual)
-
-Due to WhatsApp not providing an official API, integration proceeds in a legal, semi-manual manner.
-
-> **Note on folder naming:**  
-> The folder is specifically named **Wpmesages** (this name was misspelled in the initial design but was later adopted and kept in the system).
-
-### Step 1 --- Create Drive Folder
-
-Google Drive → My Drive →  
-Create a folder named **Wpmesages** (must be written exactly like this).
-
-### Step 2 --- Export Chat on Phone
-
-- Chat → Three dots → **More** → **Export chat**
-- **Without Media**
-- Send to Google Drive → Upload to **Wpmesages** folder
-
-### Step 3 --- Run main.py
-
-```bash
-python main.py
-```
 
 ---
 
@@ -139,6 +116,31 @@ EMAIL_ENABLED=false
 EMAIL_ADDRESS=
 EMAIL_PASSWORD=
 ```
+
+## 📱 WhatsApp Integration (Semi-Manual)
+
+Due to WhatsApp not providing an official API, integration proceeds in a legal, semi-manual manner.
+
+> **Note on folder naming:**  
+> The folder is specifically named **Wpmesages** (this name was misspelled in the initial design but was later adopted and kept in the system).
+
+### Step 1 --- Create Drive Folder
+
+Google Drive → My Drive →  
+Create a folder named **Wpmesages** (must be written exactly like this).
+
+### Step 2 --- Export Chat on Phone
+
+- Chat → Three dots → **More** → **Export chat**
+- **Without Media**
+- Send to Google Drive → Upload to **Wpmesages** folder
+
+### Step 3 --- Run main.py
+
+```bash
+python main.py
+```
+
 
 ---
 
