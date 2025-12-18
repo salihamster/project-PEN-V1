@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEN Agent - Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="chat-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h2 class="chat-title">
+                        PEN Agent
+                        <span class="online-indicator" id="connectionIndicator"></span>
+                    </h2>
+                </div>
+                <div class="header-right">
+                    <button class="header-icon-btn" id="sleepBtn" title="Start sleep cycle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="header-icon-btn" id="resetBtn" title="Reset chat">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <div class="chat-messages" id="chatMessages">
+                <div class="messages-content" id="messagesContent" aria-live="polite">
+                    <div class="welcome-message" id="welcomeMessage">
+                        <div class="welcome-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Hello! I'm PEN</h3>
+                        <p>I'm here to help you with WhatsApp, email, Drive, and your memory data.</p>
+                        <div class="welcome-suggestions">
+                            <button class="suggestion-chip" data-text="Search for 'meeting' in my WhatsApp chats">
+                                <i class="fas fa-search"></i> Search WhatsApp chats
+                            </button>
+                            <button class="suggestion-chip" data-text="What happened in the last 3 days?">
+                                <i class="fas fa-clock"></i> Summarize last 3 days
+                            </button>
+                            <button class="suggestion-chip" data-text="What can you do?">
+                                <i class="fas fa-magic"></i> What can you do?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool activity sidebar -->
+            <aside class="tools-panel" id="toolsPanel">
+                <div class="tools-header">
+                    <span class="tools-title"><i class="fas fa-wrench"></i> Tool Activity</span>
+                    <button class="tools-toggle-btn" id="toolOutputToggle" title="Show/hide tool output">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="tools-body" id="toolsBody">
+                    <div class="tools-empty" id="toolsEmpty">
+                        No tools used yet.
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="chat-input-container">
+            <div class="input-content">
+                <select class="model-selector-input" id="modelSelector" title="Select model">
+                    <option value="">Loading...</option>
+                </select>
+                <div class="input-wrapper">
+                    <textarea id="messageInput" placeholder="Type your message..." rows="1" aria-label="Message input"></textarea>
+                    <div class="input-actions">
+                        <button class="send-btn" id="sendBtn" aria-label="Send message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

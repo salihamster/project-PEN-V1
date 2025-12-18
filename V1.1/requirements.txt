@@ -1,0 +1,41 @@
+# Core dependencies
+python-dotenv==1.0.0
+fastapi==0.115.0
+uvicorn==0.30.0
+
+# Email parsing
+# IMAP is built-in to Python
+
+# Google Drive (for WhatsApp sync)
+google-auth==2.23.4
+google-auth-oauthlib==1.2.0
+google-auth-httplib2==0.2.0
+google-api-python-client==2.108.0
+
+# Web tools
+requests==2.31.0
+
+# Encryption (optional - for WhatsApp DB decryption)
+pycryptodome==3.19.0
+
+# AI Models (Multi-provider support)
+google-generativeai==0.8.3  # Gemini
+anthropic==0.39.0  # Claude
+openai==1.54.0  # GPT
+
+
+# HTML Parsing & Web Scraping
+beautifulsoup4==4.12.3
+lxml==5.1.0
+
+# OCR (Optional - for invoice image processing)
+pytesseract==0.3.10
+pdf2image==1.17.0
+Pillow==10.2.0
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+
+
+
