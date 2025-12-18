@@ -12,9 +12,7 @@ This project was developed for the Google AI Hackathon and serves as a reference
 
 - **Unified Data Integration** -- Consolidates WhatsApp, Email, and Drive data.
 - **Advanced 4-Layer Memory System** -- Multi-layered memory design for context and long-term information management.
-- **Intelligent Tool-Calling Agent** -- A powerful automation infrastructure with **29 specialized tools**.
-- **Web Interface** -- Modern web UI at localhost:8000 for easy interaction.
-- **Multi-Model Support** -- Pluggable architecture supporting Gemini, OpenAI, and Anthropic models.
+- **Intelligent Tool-Calling Agent** -- A powerful automation infrastructure with 18 specialized tools (12 core + 6 memory tools).
 - **Privacy-First Architecture** -- All data processing is local; only LLM requests go to the cloud.
 - **Production-Ready** -- Includes type safety, modular structure, error handling, and detailed logging.
 - **Cost-Efficient** -- Optimized for Gemini 2.5 Flash.
@@ -41,39 +39,29 @@ Below are the active layers used in PEN:
 
 ## 🛠️ Tool Architecture
 
-A total of **29 tools** are available across 7 categories:
+A total of **18 tools** are available:
 
-| Category | Tools | Description |
-|----------|-------|-------------|
-| **Core** | 2 | Time, statistics |
-| **WhatsApp** | 5 | List chats, get messages, participants, search, context |
-| **Email** | 5 | List, get content, search, refresh |
-| **Drive** | 3 | Search files, refresh, check updates |
-| **Web** | 2 | Web search, fetch webpage |
-| **Context/Memory** | 6 | Create, update, search, get details, link, delete |
-| **Invoice** | 5 | Parse HTML, scrape URL, OCR, trusted domains |
+- **12 Core Tools** -- Data retrieval, parsing, processing, pipelines
+- **6 Memory Tools** -- Memory CRUD, search, and index operations (tested separately)
 
 ---
 
 ## 🏗️ Project Structure
 
 ```
-project-pen/
+V1/
 ├── src/
-│   ├── agent/           # Agent core, tool executor, definitions
-│   ├── agent_tools/     # Tool implementations (29 tools)
-│   ├── models/          # Multi-model support (Gemini, OpenAI, Anthropic)
-│   ├── memory/          # L4 memory system
-│   ├── parsers/         # WhatsApp, Email, Drive parsers
-│   ├── storage/         # Data management
-│   └── utils/           # Logging utilities
-├── layers/              # Memory layer implementations (L1, L2, L2.5, L4)
-├── web/                 # Web interface assets
-├── data/                # gitignored
-├── logs/                # gitignored
-├── main.py              # Data sync pipeline
-├── pen_agent.py         # CLI interface
-├── web_server.py        # Web interface (localhost:8000)
+│   ├── agent/
+│   ├── agent_tools/
+│   ├── layers/
+│   ├── parsers/
+│   ├── storage/
+│   └── utils/
+├── data/          # gitignored
+├── logs/          # gitignored
+├── experiments/
+├── main.py
+├── pen_agent.py
 └── .env
 ```
 
@@ -173,31 +161,12 @@ python web_server.py
 
 ## 🔮 Roadmap
 
-- [ ] L6 Memory Layer (Chronological Event Log)
+- [ ] L6 Memory Layer
 - [ ] Calendar Integration
-- [ ] Streaming responses (SSE/WebSocket)
+- [ ] Web interface improvements
 - [ ] Proactive notifications
 - [ ] Statistics dashboard
 - [ ] SQLite / Postgres migration
-
----
-
-## 📝 Changelog
-
-### v1.1 (December 2025)
-- **29 tools** (up from 18) - Added invoice parsing, OCR, web scraping
-- **Web Interface** - New localhost:8000 web UI
-- **Multi-Model Support** - Pluggable architecture for Gemini, OpenAI, Anthropic
-- **Sleep Cycle** - Automated session archival (L1 → L2 + L2.5)
-- **Improved Memory** - Better L4 context rendering and duplicate detection
-- **Code Quality** - Full English codebase, improved logging
-
-### v1.0 (November 2025)
-- Initial release for Google AI Hackathon
-- 4-Layer Memory System (L1, L2, L2.5, L4)
-- WhatsApp, Email, Drive integration
-- 18 specialized tools
-- CLI interface
 
 ---
 
