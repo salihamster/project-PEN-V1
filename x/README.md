@@ -195,4 +195,4 @@ python web_server.py
 
 ---
 
-**Documentation written with Claude 3.5 Sonnet.**
+**Documentation written with Claude 4.5 Sonnet.**
