@@ -1,0 +1,120 @@
+/* ========================================
+   RESET & BASE
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   COLOR PALETTE (Dark)
+   ======================================== */
+:root {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #242424;
+    --bg-card: #1e1e1e;
+    --bg-hover: #2a2a2a;
+    --bg-input: #1a1a1a;
+    
+    --border-primary: #1e1e1e;
+    --border-secondary: #2a2a2a;
+    --border-light: #333333;
+    
+    --text-primary: #e8e8e8;
+    --text-secondary: #a0a0a0;
+    --text-muted: #6b6b6b;
+    
+    --accent-primary: #8ab4f8;
+    --accent-hover: #aecbfa;
+    
+    --success: #81c995;
+    --error: #f28b82;
+    --warning: #fdd663;
+    
+    /* Panel transition */
+    --panel-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --bg-card: #ffffff;
+    --bg-hover: #e9ecef;
+    --bg-input: #f8f9fa;
+    
+    --border-primary: #e9ecef;
+    --border-secondary: #dee2e6;
+    --border-light: #ced4da;
+    
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --text-muted: #adb5bd;
+    
+    --accent-primary: #4285f4;
+    --accent-hover: #5a95f5;
+}
+
+/* Font Sizes */
+[data-font-size="small"] .message-content {
+    font-size: 13px;
+}
+
+[data-font-size="large"] .message-content {
+    font-size: 16px;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+html {
+    overflow: hidden;
+    height: 100vh;
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Google Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    height: 100vh;
+    line-height: 1.5;
+    font-size: 14px;
+    overflow: hidden;
+    /* Prevent text selection globally (except in specific areas) */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-secondary);
+}

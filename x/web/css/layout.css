@@ -1,0 +1,776 @@
+/* ========================================
+   HEADER
+   ======================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-primary);
+    height: 56px;
+    flex-shrink: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    font-size: 16px;
+}
+
+.sidebar-toggle:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.app-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    font-size: 14px;
+}
+
+.app-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.theme-switcher {
+    display: none;
+}
+
+.header-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    font-size: 14px;
+}
+
+.header-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+/* ========================================
+   MAIN CONTENT - 3 COLUMN LAYOUT
+   ======================================== */
+.main-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 0 1fr 280px 0;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+    transition: grid-template-columns var(--panel-transition);
+}
+
+/* When sidebar is open */
+.main-content.sidebar-open {
+    grid-template-columns: 280px 1fr 280px 0;
+}
+
+/* When tools panel is collapsed */
+.main-content.tools-collapsed {
+    grid-template-columns: 0 1fr 0 0;
+}
+
+/* When artifact is open */
+.main-content.artifact-open {
+    grid-template-columns: 0 1fr 280px 55%;
+}
+
+/* Sidebar + artifact */
+.main-content.sidebar-open.artifact-open {
+    grid-template-columns: 280px 1fr 280px 55%;
+}
+
+/* Tools collapsed + artifact */
+.main-content.tools-collapsed.artifact-open {
+    grid-template-columns: 0 1fr 0 55%;
+}
+
+/* All combinations */
+.main-content.sidebar-open.tools-collapsed {
+    grid-template-columns: 280px 1fr 0 0;
+}
+
+.main-content.sidebar-open.tools-collapsed.artifact-open {
+    grid-template-columns: 280px 1fr 0 50%;
+}
+
+/* ========================================
+   PANELS
+   ======================================== */
+.panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--bg-primary);
+    border-right: 1px solid var(--border-primary);
+}
+
+.panel:last-child {
+    border-right: none;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-primary);
+    flex-shrink: 0;
+    min-height: 48px;
+}
+
+/* Chat panel header - transparent with blur effect */
+.chat-panel .panel-header {
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: none;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.panel-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-size: 12px;
+}
+
+.panel-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.panel-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   CHAT PANEL
+   ======================================== */
+.chat-panel {
+    background: var(--bg-primary);
+}
+
+.chat-body {
+    padding: 0;
+}
+
+.messages-content {
+    padding: 20px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   PANEL TOGGLE BUTTONS
+   ======================================== */
+.sidebar-panel-toggle,
+.tools-panel-toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-secondary);
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 100;
+    transition: all var(--panel-transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-panel-toggle:hover,
+.tools-panel-toggle:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+/* Sidebar Toggle (Left) */
+.sidebar-panel-toggle {
+    left: 16px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide sidebar toggle when sidebar is open */
+.main-content.sidebar-open .sidebar-panel-toggle {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Tools Toggle (Right) */
+.tools-panel-toggle {
+    right: 16px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Show tools toggle when panel is collapsed */
+.main-content.tools-collapsed .tools-panel-toggle {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========================================
+   APP LOGO LINK
+   ======================================== */
+.app-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.app-logo-link:hover {
+    background: var(--bg-hover);
+}
+
+/* ========================================
+   PAGE TRANSITIONS
+   ======================================== */
+.app {
+    transition: transform var(--panel-transition);
+}
+
+.app.settings-open {
+    transform: translateX(-100%);
+}
+
+.app.archived-open {
+    transform: translateX(100%);
+}
+
+.app.penote-open {
+    transform: translateY(-100%);
+}
+
+.app.calendar-open {
+    transform: translateY(-100%);
+}
+
+/* ========================================
+   ARTIFACT PANEL (CANVAS)
+   ======================================== */
+.artifact-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--bg-primary);
+    border-left: 1px solid var(--border-primary);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity var(--panel-transition), transform var(--panel-transition);
+}
+
+.artifact-panel.open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.right-toggles {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+    transition: all var(--panel-transition);
+}
+
+/* Hide right toggles when artifact is open */
+.main-content.artifact-open .right-toggles {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Artifact Panel Header - Enhanced */
+.artifact-panel .panel-header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-primary);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 56px;
+}
+
+.artifact-panel .panel-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.artifact-panel .panel-title::before {
+    content: "📄";
+    font-size: 18px;
+}
+
+/* Artifact Panel Content - Slider Layout */
+.artifact-body {
+    flex: 1;
+    overflow: hidden; /* Important for slider */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0; /* Reset padding */
+}
+
+.artifact-slider-wrapper {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.artifact-slider {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.artifact-slider.view-active {
+    transform: translateX(-50%);
+}
+
+.artifact-slide {
+    width: 50%;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.artifact-slide.edit-slide {
+    /* Left side */
+}
+
+.artifact-slide.view-slide {
+    /* Right side */
+}
+
+.artifact-content {
+    flex: 1;
+    padding: 20px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    outline: none;
+    min-height: 100%; /* Ensure full height for background */
+    background-color: var(--bg-primary);
+}
+
+.artifact-editor {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border: none;
+    resize: none;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    outline: none;
+    display: block; /* Ensure it's always block in the slide */
+}
+
+/* Artifact Mode Switch */
+.artifact-mode-switch {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.toggle-switch.small.icon-switch {
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-switch.small.icon-switch .toggle-slider {
+    border-radius: 24px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--accent-primary); /* Always accent border */
+}
+
+.toggle-switch.small.icon-switch .toggle-slider:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f044"; /* fa-edit */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--accent-primary); /* Always accent color */
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--bg-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.toggle-switch.small.icon-switch input:checked + .toggle-slider {
+    background-color: var(--bg-tertiary);
+    border-color: var(--accent-primary);
+}
+
+.toggle-switch.small.icon-switch input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+    content: "\f06e"; /* fa-eye */
+    color: var(--accent-primary);
+    background-color: var(--bg-primary);
+}
+
+
+/* View Mode - Rendered Markdown */
+.artifact-content.view-mode {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    white-space: normal;
+    transition: opacity 0.3s ease;
+}
+
+.artifact-content.view-mode h1,
+.artifact-content.view-mode h2,
+.artifact-content.view-mode h3 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.artifact-content.view-mode table,
+.artifact-content.view-mode .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    display: table;
+}
+
+.artifact-content.view-mode table th,
+.artifact-content.view-mode .md-table th {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-secondary);
+    font-size: 14px;
+}
+
+.artifact-content.view-mode table td,
+.artifact-content.view-mode .md-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.artifact-content.view-mode table tr:last-child td,
+.artifact-content.view-mode .md-table tr:last-child td {
+    border-bottom: none;
+}
+
+.artifact-content.view-mode table tr:hover,
+.artifact-content.view-mode .md-table tr:hover {
+    background: var(--bg-tertiary);
+}
+
+.artifact-content.view-mode h1 {
+    font-size: 2em;
+    border-bottom: 1px solid var(--border-primary);
+    padding-bottom: 8px;
+}
+
+.artifact-content.view-mode h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--border-primary);
+    padding-bottom: 6px;
+}
+
+.artifact-content.view-mode h3 {
+    font-size: 1.25em;
+}
+
+.artifact-content.view-mode p {
+    margin: 0 0 8px 0;
+    line-height: 1.5;
+}
+
+.artifact-content.view-mode ul,
+.artifact-content.view-mode ol {
+    margin: 8px 0;
+    padding-left: 2em;
+}
+
+.artifact-content.view-mode li {
+    margin-bottom: 4px;
+}
+
+.artifact-content.view-mode code {
+    background: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+}
+
+.artifact-content.view-mode pre {
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+}
+
+.artifact-content.view-mode pre code {
+    background: transparent;
+    padding: 0;
+}
+
+.artifact-content.view-mode blockquote {
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 16px;
+    margin: 16px 0;
+    color: var(--text-secondary);
+}
+
+.artifact-content.view-mode hr {
+    border: none;
+    border-top: 1px solid var(--border-primary);
+    margin: 16px 0;
+    height: 0;
+}
+
+.artifact-content.view-mode .md-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Edit Mode - Raw Text */
+.artifact-content.edit-mode {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    white-space: pre-wrap;
+}
+
+/* Syntax highlighting for code */
+.artifact-content pre {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    background: transparent;
+}
+
+.artifact-content code {
+    font-family: inherit;
+    background: transparent;
+    padding: 0;
+}
+
+/* Scrollbar styling for artifact content */
+.artifact-content::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.artifact-content::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.artifact-content::-webkit-scrollbar-thumb {
+    background: var(--border-secondary);
+    border-radius: 6px;
+    border: 3px solid var(--bg-secondary);
+}
+
+.artifact-content::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Artifact Status Bar - Enhanced */
+.artifact-status {
+    padding: 10px 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-primary);
+    background: var(--bg-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.artifact-status::before {
+    content: "✓";
+    color: var(--success);
+    margin-right: 6px;
+}
+
+/* Panel Actions - Enhanced */
+.artifact-panel .panel-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.artifact-panel .panel-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.artifact-panel .panel-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .artifact-panel {
+        width: 55%;
+    }
+    
+    .main-content.artifact-open {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .artifact-panel {
+        width: 100%;
+    }
+    
+    .main-content.artifact-open {
+        width: 0;
+        overflow: hidden;
+    }
+}
